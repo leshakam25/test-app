@@ -1,0 +1,52 @@
+<div
+  style="
+max-width: 400px;
+background: lightcoral;
+margin: 16px auto;
+padding: 8px 16px;
+border-radius: 4px;
+">
+
+  <h2>{{product.title}}</h2>
+
+  <img [src]="product.image" [alt]="product.title" style="
+  border-radius: 4px;
+  max-width: 200px;
+
+   height: auto"/>
+
+  <p style="font-weight: bold">price:{{product.price | currency:'$'}}</p>
+  <button
+    [ngClass]="{
+      'show': !details,
+      'hide': details
+    }"
+
+    style="
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      width: 100%;
+    "
+    (click)="details = !details"
+  > {{ details ? "Показать" : "Скрыть" }} детали</button>
+  <div
+    *ngIf="details"
+    style="
+    margin: 16px auto;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: lightgreen"
+
+  >
+    <p>{{product.description}}</p>
+    <p>Рейтинг:
+      <span [ngStyle]="{fontWeight: 'bold'}">
+        {{product.rating.rate | number}}
+      </span>
+    </p>
+  </div>
+</div>
